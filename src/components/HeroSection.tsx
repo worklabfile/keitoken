@@ -103,7 +103,7 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 text-center z-10">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 glow-text bg-clip-text text-transparent bg-gradient-to-r from-white to-space-accent">
-            КЭИ — токен образовательной экосистемы
+            Токен образовательной экосистемы
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-300">
             Покупайте, используйте, участвуйте
@@ -119,18 +119,6 @@ const HeroSection = () => {
             </Link>
           </div>
 
-          {/* Enhanced 3D coin */}
-          <div className="mt-16 flex justify-center">
-            <div className="enhanced-coin-wrapper">
-              <div ref={coinRef} className="enhanced-coin">
-                <div className="coin-inner"></div>
-                <div className="coin-edge"></div>
-                <div className="coin-inner coin-back"></div>
-              </div>
-              {/* Light reflections */}
-              <div className="coin-light-reflection"></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
