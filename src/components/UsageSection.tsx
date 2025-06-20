@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -10,16 +9,22 @@ const UsageSection = () => {
   const slides = [
     {
       id: 1,
-      title: 'Оплата обучения',
-      description: 'Используйте КЭИ токены для оплаты курсов и образовательных программ у наших партнеров',
-      image: 'education.jpg',
+      title: 'Голосования в DAO',
+      description: 'Участвуйте в голосованиях DAO и влияйте на развитие образовательной платформы, предлагая и выбирая новые курсы и направления.',
+      image: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2832&auto=format&fit=crop',
     },
     {
       id: 2,
-      title: 'Голосования',
-      description: 'Участвуйте в голосованиях DAO и влияйте на развитие образовательной платформы',
-      image: 'voting.jpg',
+      title: 'Доступ к эксклюзивному контенту',
+      description: 'Держатели токенов получают доступ к закрытым аналитическим статьям, исследованиям и вебинарам от ведущих экспертов.',
+      image: 'https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=2940&auto=format&fit=crop',
     },
+    {
+      id: 3,
+      title: 'Получение уникальных NFT',
+      description: 'Владельцы токенов могут получать эксклюзивные NFT за достижения и участие в жизни сообщества.',
+      image: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2832&auto=format&fit=crop',
+    }
   ];
 
   const nextSlide = () => {
@@ -63,23 +68,13 @@ const UsageSection = () => {
                 <div className="glass rounded-xl p-8 h-full flex flex-col justify-center">
                   <div className="flex flex-col md:flex-row gap-8 items-center">
                     <div className="w-full md:w-1/2">
-                      <div className="aspect-video rounded-lg bg-gradient-to-br from-space-accent to-space-purple flex items-center justify-center">
-                        <div className="text-5xl text-white">#{slide.id}</div>
-                      </div>
+                      <img src={slide.image} alt={slide.title} className="aspect-video w-full h-full object-cover rounded-lg bg-gradient-to-br from-space-accent to-space-purple" />
                     </div>
                     <div className="w-full md:w-1/2 text-center md:text-left">
                       <h3 className="text-2xl font-bold mb-4">{slide.title}</h3>
                       <p className="text-gray-300 mb-6">{slide.description}</p>
                       
                       {index === 0 && (
-                        <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                          {[1, 2, 3, 4].map((i) => (
-                            <div key={i} className="w-12 h-12 bg-white rounded-full"></div>
-                          ))}
-                        </div>
-                      )}
-                      
-                      {index === 1 && (
                         <div className="p-4 glass bg-opacity-50 rounded-lg">
                           <div className="mb-2">Текущее голосование:</div>
                           <div className="font-bold">Новое направление обучения 2025</div>
@@ -89,12 +84,11 @@ const UsageSection = () => {
                         </div>
                       )}
                       
-                      {index === 2 && (
-                        <div className="grid grid-cols-2 gap-2">
-                          <div className="aspect-square bg-gray-700 rounded-lg"></div>
-                          <div className="aspect-square bg-gray-700 rounded-lg"></div>
-                          <div className="aspect-square bg-gray-700 rounded-lg"></div>
-                          <div className="aspect-square bg-gray-700 rounded-lg"></div>
+                      {index === 1 && (
+                        <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                          {[1, 2, 3, 4].map((i) => (
+                            <div key={i} className="w-12 h-12 bg-white rounded-full"></div>
+                          ))}
                         </div>
                       )}
                     </div>

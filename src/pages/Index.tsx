@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '@/components/NavBar';
@@ -19,26 +18,21 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <Link to="/about" className="glass hover:border-space-accent hover:bg-space-dark/80 transition-all p-6 rounded-lg text-center border border-space-accent/20">
               <h3 className="font-bold text-xl mb-2 text-space-accent">О проекте</h3>
               <p className="text-gray-300">Узнайте больше о токене КЭИ и его применении в образовательной экосистеме</p>
             </Link>
             
-            <Link to="/buy" className="glass hover:border-space-accent hover:bg-space-dark/80 transition-all p-6 rounded-lg text-center border border-space-accent/20">
-              <h3 className="font-bold text-xl mb-2 text-space-accent">Купить токен</h3>
-              <p className="text-gray-300">Приобретите токены КЭИ для участия в экосистеме и получения преимуществ</p>
-            </Link>
-            
-            <Link to="/game" className="glass hover:border-space-accent hover:bg-space-dark/80 transition-all p-6 rounded-lg text-center border border-space-accent/20">
-              <h3 className="font-bold text-xl mb-2 text-space-accent">Играть и зарабатывать</h3>
-              <p className="text-gray-300">Играйте в мини-игру и накапливайте токены КЭИ перед выходом на биржу</p>
+            <Link to="/courses" className="glass hover:border-space-accent hover:bg-space-dark/80 transition-all p-6 rounded-lg text-center border border-space-accent/20">
+              <h3 className="font-bold text-xl mb-2 text-space-accent">Наши курсы</h3>
+              <p className="text-gray-300">Погрузитесь в мир криптовалют с нашими образовательными программами</p>
             </Link>
           </div>
           
           <div className="text-center">
-            <Link to="/buy" className="crypto-button inline-flex items-center gap-2">
-              Начать сейчас
+            <Link to="/courses" className="crypto-button inline-flex items-center gap-2">
+              Начать обучение
             </Link>
           </div>
         </div>

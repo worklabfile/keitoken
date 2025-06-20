@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, LogOut } from 'lucide-react';
@@ -58,7 +57,7 @@ const NavBar = () => {
         <div className="flex items-center">
           <Link to="/" className="text-xl font-bold text-white flex items-center">
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-space-accent to-space-purple flex items-center justify-center mr-2">
-              
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
             </div>
             <span className="hidden md:inline">КЭИ Токен</span>
           </Link>
@@ -83,6 +82,9 @@ const NavBar = () => {
           </Link>
           <Link to="/game" className="text-white hover:text-space-accent transition-colors">
             Игра
+          </Link>
+          <Link to="/courses" className="text-white hover:text-space-accent transition-colors">
+            Обучения
           </Link>
         </div>
 
@@ -192,6 +194,13 @@ const NavBar = () => {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Игра
+                  </Link>
+                  <Link 
+                    to="/courses" 
+                    className="text-2xl text-white hover:text-space-accent transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Обучения
                   </Link>
                   {!user && (
                     <Link 
