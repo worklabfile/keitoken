@@ -13,15 +13,25 @@ const Buy = () => {
             Вы можете отслеживать график и совершать операции на децентрализованных биржах.
           </p>
         </div>
-        <div className="glass rounded-xl p-2 md:p-4">
-          <div style={{ height: '70vh', minHeight: '500px' }}>
+        <div className="glass rounded-xl p-2 md:p-4 relative overflow-visible">
+          <style>{`#dexscreener-embed{position:relative;width:100%;padding-bottom:125%;}@media(min-width:1400px){#dexscreener-embed{padding-bottom:65%;}}#dexscreener-embed iframe{position:absolute;width:100%;height:100%;top:0;left:0;border:0;}`}</style>
+          <div id="dexscreener-embed">
             <iframe 
-              src="https://dexscreener.com/solana/9d9mb8kooFfaD3SctgZtkxQypkshx6ezhbKio89ixyy2?embed=1&theme=dark&info=0"
-              style={{ height: "100%", width: "100%", borderRadius: '12px' }}
+              src="https://dexscreener.com/solana/Er71a5FoU2ZKXTuRbeWtRXrYwcNvrDTxjqA5LurVsJJn?embed=1&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
               title="DEX Screener"
-              frameBorder="0"
+              allowFullScreen
             ></iframe>
           </div>
+        </div>
+        <div className="flex justify-center mt-8">
+          <a
+            href="https://dexscreener.com/solana/Er71a5FoU2ZKXTuRbeWtRXrYwcNvrDTxjqA5LurVsJJn"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="crypto-button py-3 px-8 text-lg font-bold"
+          >
+            Купить
+          </a>
         </div>
       </div>
       <Footer />
