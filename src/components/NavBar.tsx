@@ -1,55 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Menu, X, LogOut } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { supabase } from '@/integrations/supabase/client';
-import { toast } from '@/components/ui/use-toast';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 import {
   Drawer,
   DrawerContent,
   DrawerTrigger,
   DrawerClose
 } from '@/components/ui/drawer';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user || null);
-    });
-
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user || null);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  const handleLogout = async () => {
-    try {
-      await supabase.auth.signOut();
-      toast({
-        title: "Выход выполнен",
-        description: "Вы успешно вышли из системы",
-      });
-      navigate('/');
-    } catch (error) {
-      toast({
-        title: "Ошибка",
-        description: "Не удалось выйти из системы",
-        variant: "destructive"
-      });
-    }
-  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
@@ -80,64 +40,13 @@ const NavBar = () => {
           <Link to="/buy" className="text-white hover:text-space-accent transition-colors">
             Купить
           </Link>
-          <Link to="/game" className="text-white hover:text-space-accent transition-colors">
-            Игра
-          </Link>
           <Link to="/courses" className="text-white hover:text-space-accent transition-colors">
             Обучения
           </Link>
         </div>
 
-        {/* Auth Section */}
-        <div className="hidden md:flex items-center ml-6">
-          {user ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center text-white hover:text-space-accent transition-colors">
-                <div className="w-8 h-8 rounded-full bg-space-accent/30 flex items-center justify-center">
-                  {user.email?.charAt(0).toUpperCase() || 'U'}
-                </div>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="glass border-space-accent/20">
-                <DropdownMenuItem 
-                  className="flex items-center gap-2 cursor-pointer" 
-                  onClick={handleLogout}
-                >
-                  <LogOut size={16} />
-                  <span>Выйти</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <Link 
-              to="/auth" 
-              className="crypto-button py-2 px-4 text-sm"
-            >
-              Войти
-            </Link>
-          )}
-        </div>
-
         {/* Mobile Navigation Button */}
         <div className="md:hidden flex items-center">
-          {user && (
-            <DropdownMenu>
-              <DropdownMenuTrigger className="mr-4 flex items-center text-white hover:text-space-accent transition-colors">
-                <div className="w-8 h-8 rounded-full bg-space-accent/30 flex items-center justify-center">
-                  {user.email?.charAt(0).toUpperCase() || 'U'}
-                </div>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="glass border-space-accent/20">
-                <DropdownMenuItem 
-                  className="flex items-center gap-2 cursor-pointer" 
-                  onClick={handleLogout}
-                >
-                  <LogOut size={16} />
-                  <span>Выйти</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          )}
-          
           {/* Drawer for mobile menu */}
           <Drawer direction="right">
             <DrawerTrigger asChild>
@@ -189,36 +98,18 @@ const NavBar = () => {
                     Купить
                   </Link>
                   <Link 
-                    to="/game" 
-                    className="text-2xl text-white hover:text-space-accent transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Игра
-                  </Link>
-                  <Link 
                     to="/courses" 
                     className="text-2xl text-white hover:text-space-accent transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Обучения
                   </Link>
-                  {!user && (
-                    <Link 
-                      to="/auth" 
-                      className="crypto-button py-2 px-6 mt-4"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Войти
-                    </Link>
-                  )}
                 </div>
               </div>
             </DrawerContent>
           </Drawer>
         </div>
       </div>
-
-      {/* Remove old Mobile Navigation Menu since we're using Drawer now */}
     </nav>
   );
 };
